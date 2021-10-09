@@ -1,0 +1,42 @@
+
+public class Main {
+
+    public static void main(String[] args) {
+        int[][] arr1 = { { 1, 4 }, { 3, 2 }, { 4, 1 } };
+        int[][] arr2 = { { 3, 3 }, { 3, 3 } };
+        System.out.println("안녕");
+        int[][] answer = solution(arr1, arr2);
+
+    }
+
+    static public int[][] solution(int[][] arr1, int[][] arr2) {
+        int arr1_r = arr1.length;
+        int arr1_c = arr1[0].length; // arr1의 column 수와 arr2의 row 수가 동일해야한다.
+        int arr2_r = arr2.length;
+        int arr2_c = arr2[0].length;
+
+        int arr3_r = arr1_r;
+        int arr3_c = arr2_c;
+
+        int[][] arr3 = new int[arr3_r][arr3_c];
+        for (int i = 0; i < arr3_r; i++) {
+            for (int j = 0; j < arr3_c; j++) {
+                int n = 0;
+                // arr1[i][0,1,2]와 arr2[0,1,2][j]를 각각 곱해서 더한다.
+                for (int k = 0; k < arr1_c; k++) {
+                    n += arr1[i][k] * arr2[k][j];
+                }
+                arr3[i][j] = n;
+
+            }
+        }
+        // 출력 점검
+        // for (int i = 0; i < arr3_r; i++) {
+        // for (int j = 0; j < arr3_c; j++) {
+        // System.out.println(arr3[i][j]);
+        // }
+        // }
+        return arr3;
+    }
+
+}
